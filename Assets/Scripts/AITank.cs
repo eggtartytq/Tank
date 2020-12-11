@@ -11,6 +11,9 @@ public class AITank : Unit
     public ISRange stoppingDistance;
     public float AICoreTimer; //  冷却时间
     public float rotateSpeed;   //敌人旋转速度
+    
+    //public GameObject completeWINObjectUI;
+    
 
     private GameObject enemy;   //玩家
 
@@ -71,8 +74,10 @@ public class AITank : Unit
         {
             tw.Shoot();
         }
-        Debug.Log(curAR);
-        Debug.Log(curSD);
+        //Debug.Log(curAR);
+        //Debug.Log(curSD);
+
+        
     }
     IEnumerator Timer()
     {
@@ -104,4 +109,15 @@ public class AITank : Unit
             }
         }
     }
+
+    /*public void OnDestroy()
+    {
+        if (i == 2)
+        {
+            completeWINObjectUI.SetActive(true);
+            Time.timeScale = 0;
+            FCAudio.Stop();
+        }
+    }
+    */
 }

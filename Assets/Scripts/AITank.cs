@@ -74,8 +74,8 @@ public class AITank : Unit
         {
             tw.Shoot();
         }
-        //Debug.Log(curAR);
-        //Debug.Log(curSD);
+        Debug.Log(curAR);
+        Debug.Log(curSD);
 
         
     }

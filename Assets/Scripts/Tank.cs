@@ -19,7 +19,9 @@ public class Tank : Unit
     {
         //enemyMask = LayerManager.GetEnemyLayer(team);
         tw = GetComponent<TankWeapon>();
-        tw.Init(team);
+        tw.Init(team); 
+        Time.timeScale = 1;
+
     }
 
     // Update is called once per frame
@@ -74,11 +76,29 @@ public class Tank : Unit
     public void OnDestroy()
     {
         //isGameOver = true;
+        win();
+        //Time.timeScale = 0;
+        //FCAudio.Stop();
         //completeLoseObjectUI.SetActive(true);
-        Time.timeScale = 0;
-        FCAudio.Stop();
-        completeLoseObjectUI.SetActive(true);
         
     }
+    
 
-}
+    public void win()
+    {
+        if (null == this) 
+        {
+            Time.timeScale = 0;
+            FCAudio.Stop();
+            completeLoseObjectUI.SetActive(true);
+        }
+        
+            Time.timeScale = 0;
+            FCAudio.Stop();
+            completeLoseObjectUI.SetActive(true);
+        
+    }
+    }
+    
+
+

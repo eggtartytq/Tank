@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class Mennu : MonoBehaviour
 {
-    public int nextScene;
+    
 
     public void PlayGame()
     {
         SceneManager.LoadScene("gameMap");
     }
 
+    public void BacktoMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 
 
     public void QuitGame()

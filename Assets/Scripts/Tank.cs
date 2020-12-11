@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Tank : Unit
 {
@@ -54,6 +55,15 @@ public class Tank : Unit
         if (Input.GetKeyDown(KeyCode.Space))
         {
             tw.Shoot();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            health += 100;
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("gameMap");
         }
     }
 }

@@ -25,6 +25,8 @@ public class AITank : Unit
         enemyLayer = LayerManager.GetEnemyLayer(team);
         tw = GetComponent<TankWeapon>();
         nam = GetComponent<NavMeshAgent>();
+        nam.updateRotation = true;
+        nam.updatePosition = true;
         tw.Init(team);
         StartCoroutine(Timer());
         Debug.Log(Timer());
@@ -50,12 +52,14 @@ public class AITank : Unit
         else
         {
             //nam.SetDestination(enemy.transform.position);
-
+            
             nam.ResetPath();
             Vector3 dir = enemy.transform.position - transform.position;
             Quaternion wantedToRoatation = Quaternion.LookRotation(dir);
             transform.rotation = Quaternion.Slerp(transform.rotation, wantedToRoatation, rotateSpeed * Time.deltaTime);
+
             tw.Shoot();
+            SearchEnemy();
             //transform.LookAt(player.transform.position);
             //if (timer > shootCoolDown)
             // {
@@ -83,6 +87,7 @@ public class AITank : Unit
     //在多个敌人中选取距离最近的
     public void SearchEnemy()
     {
+        
         Collider[] cols = Physics.OverlapSphere(transform.position, enemySearchRange, enemyLayer);
         if (cols.Length > 0)
         {

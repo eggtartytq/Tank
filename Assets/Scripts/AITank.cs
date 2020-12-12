@@ -32,7 +32,7 @@ public class AITank : Unit
         nam.updatePosition = true;
         tw.Init(team);
         StartCoroutine(Timer());
-        Debug.Log(Timer());
+        //Debug.Log(Timer());
     }
 
      void Update()
@@ -74,8 +74,8 @@ public class AITank : Unit
         {
             tw.Shoot();
         }
-        Debug.Log(curAR);
-        Debug.Log(curSD);
+        //Debug.Log(curAR);
+        //Debug.Log(curSD);
 
         
     }

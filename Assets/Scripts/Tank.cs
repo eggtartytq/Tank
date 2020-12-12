@@ -9,12 +9,13 @@ public class Tank : Unit
     public float moveSpeed;         //移动速度  7
     public float rotateSpeed;       //旋转速度  150
     public GameObject completeLoseObjectUI;
+    public GameObject completeWinObjectUI;
     public AudioSource FCAudio;
     //private bool isGameOver = false;
     
     private TankWeapon tw;
     //private LayerMask enemyMask;
-
+    private int enemyCount;
     void Start()
     {
         //enemyMask = LayerManager.GetEnemyLayer(team);
@@ -71,12 +72,15 @@ public class Tank : Unit
             SceneManager.LoadScene("gameMap");
         }
 
+       enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        if (enemyCount <= 0) Win();
+       
     }
 
     public void OnDestroy()
     {
         //isGameOver = true;
-        win();
+        Lose();
         //Time.timeScale = 0;
         //FCAudio.Stop();
         //completeLoseObjectUI.SetActive(true);
@@ -84,19 +88,31 @@ public class Tank : Unit
     }
     
 
-    public void win()
+    public void Lose()
     {
-        if (null == this) 
+        if (null == this)
         {
             Time.timeScale = 0;
             FCAudio.Stop();
             completeLoseObjectUI.SetActive(true);
         }
-        
+
+        Time.timeScale = 0;
+        FCAudio.Stop();
+        completeLoseObjectUI.SetActive(true);
+
+    }
+    public void Win()
+    {
+        if (null == this)
+        {
             Time.timeScale = 0;
             FCAudio.Stop();
-            completeLoseObjectUI.SetActive(true);
-        
+            completeWinObjectUI.SetActive(true);
+        }
+        Time.timeScale = 0;
+        FCAudio.Stop();
+        completeWinObjectUI.SetActive(true);
     }
     }
     

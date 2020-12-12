@@ -29,8 +29,7 @@ public class Unit : MonoBehaviour
             Instantiate(deadEffect, transform.position, transform.rotation);
         //}
         //if (gameObject != null)
-        //{
-            Destroy(gameObject);
+        Destroy(gameObject);
         //}
         
     }

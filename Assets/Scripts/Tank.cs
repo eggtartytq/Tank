@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Tank : Unit
@@ -11,6 +12,7 @@ public class Tank : Unit
     public GameObject completeLoseObjectUI;
     public GameObject completeWinObjectUI;
     public AudioSource FCAudio;
+    public Text HP;
     //private bool isGameOver = false;
     
     private TankWeapon tw;
@@ -74,7 +76,7 @@ public class Tank : Unit
 
        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         if (enemyCount <= 0) Win();
-       
+        HP.text = "HP: " + health;
     }
 
     public void OnDestroy()
